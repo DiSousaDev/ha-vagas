@@ -23,7 +23,7 @@ public class VagaService {
     @Transactional(readOnly = true)
     public Page<VagaDTO> findAllPaged(Pageable pageable) {
         Page<Vaga> vagas = vagaRepository.findAll(pageable);
-        return vagas.map(obj -> new VagaDTO(obj));
+        return vagas.map(VagaDTO::new);
     }
 
     @Transactional(readOnly = true)
@@ -41,6 +41,15 @@ public class VagaService {
         return new VagaDTO(vaga);
     }
 
+    @Transactional
+    public VagaDTO update(Long id, VagaInsertDTO vagaInsertDTO) {
+        Vaga vaga = new Vaga();
+        copyDTOToEntity(vagaInsertDTO, vaga);
+        vaga.setId(id);
+        vaga = vagaRepository.save(vaga);
+        return new VagaDTO(vaga);
+    }
+
     private void copyDTOToEntity(VagaInsertDTO vagaInsertDTO, Vaga vaga){
         vaga.setTitulo(vagaInsertDTO.getTitulo());
         vaga.setEstado(vagaInsertDTO.getEstado());
@@ -53,4 +62,5 @@ public class VagaService {
         vaga.setEmpresa(new Empresa(vagaInsertDTO.getEmpresa()));
         vaga.setAreaAtuacao(new AreaAtuacao(vagaInsertDTO.getAreaAtuacao()));
     }
+
 }

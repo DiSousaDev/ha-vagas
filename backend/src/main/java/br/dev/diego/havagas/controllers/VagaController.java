@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,4 +43,11 @@ public class VagaController {
                 .buildAndExpand(vagaDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(vagaDTO);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<VagaDTO> update(@PathVariable Long id, @RequestBody VagaInsertDTO vagaInsertDTO) {
+        VagaDTO vagaDTO = service.update(id, vagaInsertDTO);
+        return ResponseEntity.ok().body(vagaDTO);
+    }
+
 }
