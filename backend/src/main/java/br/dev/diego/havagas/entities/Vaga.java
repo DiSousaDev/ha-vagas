@@ -1,9 +1,9 @@
 package br.dev.diego.havagas.entities;
 
-import br.dev.diego.havagas.entities.enums.Automacao;
-import br.dev.diego.havagas.entities.enums.NivelCarreira;
-import br.dev.diego.havagas.entities.enums.NivelIngles;
-import br.dev.diego.havagas.entities.enums.RegimeTrabalho;
+import br.dev.diego.havagas.domain.enums.Automacao;
+import br.dev.diego.havagas.domain.enums.NivelCarreira;
+import br.dev.diego.havagas.domain.enums.NivelIngles;
+import br.dev.diego.havagas.domain.enums.RegimeTrabalho;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

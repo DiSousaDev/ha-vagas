@@ -1,4 +1,4 @@
-package br.dev.diego.havagas.entities.enums;
+package br.dev.diego.havagas.domain.enums;
 
 public enum NivelIngles {
 

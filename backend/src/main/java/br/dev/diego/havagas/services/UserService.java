@@ -2,10 +2,10 @@ package br.dev.diego.havagas.services;
 
 import br.dev.diego.havagas.entities.Role;
 import br.dev.diego.havagas.entities.User;
-import br.dev.diego.havagas.entities.dto.RoleDTO;
-import br.dev.diego.havagas.entities.dto.UserDTO;
-import br.dev.diego.havagas.entities.dto.UserInsertDTO;
-import br.dev.diego.havagas.entities.dto.UserUpdateDTO;
+import br.dev.diego.havagas.domain.dto.RoleDTO;
+import br.dev.diego.havagas.domain.dto.UserDTO;
+import br.dev.diego.havagas.domain.dto.UserInsertDTO;
+import br.dev.diego.havagas.domain.dto.UserUpdateDTO;
 import br.dev.diego.havagas.repositories.RoleRepository;
 import br.dev.diego.havagas.repositories.UserRepository;
 import br.dev.diego.havagas.services.exceptions.DatabaseException;

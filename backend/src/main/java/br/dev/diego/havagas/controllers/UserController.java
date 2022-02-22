@@ -1,8 +1,8 @@
 package br.dev.diego.havagas.controllers;
 
-import br.dev.diego.havagas.entities.dto.UserDTO;
-import br.dev.diego.havagas.entities.dto.UserInsertDTO;
-import br.dev.diego.havagas.entities.dto.UserUpdateDTO;
+import br.dev.diego.havagas.domain.dto.UserDTO;
+import br.dev.diego.havagas.domain.dto.UserInsertDTO;
+import br.dev.diego.havagas.domain.dto.UserUpdateDTO;
 import br.dev.diego.havagas.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
 package br.dev.diego.havagas.controllers;
 
-import br.dev.diego.havagas.entities.dto.VagaDTO;
-import br.dev.diego.havagas.entities.dto.VagaInsertDTO;
+import br.dev.diego.havagas.domain.dto.VagaDTO;
+import br.dev.diego.havagas.domain.dto.VagaInsertDTO;
 import br.dev.diego.havagas.services.VagaService;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +56,5 @@ public class VagaController {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
 
 }

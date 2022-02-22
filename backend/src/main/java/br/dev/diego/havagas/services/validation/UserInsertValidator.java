@@ -2,7 +2,7 @@ package br.dev.diego.havagas.services.validation;
 
 import br.dev.diego.havagas.controllers.exceptions.FieldMessage;
 import br.dev.diego.havagas.entities.User;
-import br.dev.diego.havagas.entities.dto.UserInsertDTO;
+import br.dev.diego.havagas.domain.dto.UserInsertDTO;
 import br.dev.diego.havagas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

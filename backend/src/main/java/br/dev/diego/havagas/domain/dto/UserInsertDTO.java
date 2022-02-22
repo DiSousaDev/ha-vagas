@@ -1,4 +1,4 @@
-package br.dev.diego.havagas.entities.dto;
+package br.dev.diego.havagas.domain.dto;
 
 import br.dev.diego.havagas.services.validation.UserInsertValid;
 
