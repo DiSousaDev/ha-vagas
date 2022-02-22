@@ -1,5 +1,6 @@
 package br.dev.diego.havagas.services;
 
+import br.dev.diego.havagas.domain.mapper.UserMapper;
 import br.dev.diego.havagas.entities.Role;
 import br.dev.diego.havagas.entities.User;
 import br.dev.diego.havagas.domain.dto.RoleDTO;
@@ -41,16 +42,19 @@ public class UserService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Transactional(readOnly = true)
     public Page<UserDTO> findaAllPaged(Pageable pageable) {
-        return userRepository.findAll(pageable).map(UserDTO::new);
+        return userRepository.findAll(pageable).map(user -> userMapper.userToUserDto(user));
     }
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
         Optional<User> userOptional = userRepository.findById(id);
         User entity = userOptional.orElseThrow(() -> new ResourceNotFoundException("Nenhum usuário encontrado."));
-        return new UserDTO(entity);
+        return userMapper.userToUserDto(entity);
     }
 
     @Transactional
@@ -59,7 +63,7 @@ public class UserService implements UserDetailsService {
         copyDtoToEntity(userInsertDTO, user);
         user.setPassword(passwordEncoder.encode(userInsertDTO.getPassword()));
         user = userRepository.save(user);
-        return new UserDTO(user);
+        return userMapper.userToUserDto(user);
     }
 
     @Transactional
@@ -68,7 +72,7 @@ public class UserService implements UserDetailsService {
             User user = userRepository.getById(id);
             copyDtoToEntity(userUpdateDTO, user);
             user = userRepository.save(user);
-            return  new UserDTO(user);
+            return userMapper.userToUserDto(user);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id [" + id +  "] não encontrado.");
         }

@@ -1,6 +1,5 @@
 package br.dev.diego.havagas.domain.dto;
 
-import br.dev.diego.havagas.entities.Vaga;
 import br.dev.diego.havagas.domain.enums.Automacao;
 import br.dev.diego.havagas.domain.enums.NivelCarreira;
 import br.dev.diego.havagas.domain.enums.NivelIngles;
@@ -20,38 +19,6 @@ public class VagaDTO {
     private Instant dataAtualizacao;
     private Long empresa;
     private Long areaAtuacao;
-
-    public VagaDTO(){
-    }
-
-    public VagaDTO(Long id, String titulo, String estado, String descricao, Automacao automacao, NivelCarreira nivelCarreira,
-        NivelIngles nivelIngles, RegimeTrabalho regimeTrabalho, Instant dataAtualizacao, Long empresa, Long areaAtuacao) {
-        this.id = id;
-        this.titulo = titulo;
-        this.estado = estado;
-        this.descricao = descricao;
-        this.automacao = automacao;
-        this.nivelCarreira = nivelCarreira;
-        this.nivelIngles = nivelIngles;
-        this.regimeTrabalho = regimeTrabalho;
-        this.dataAtualizacao = dataAtualizacao;
-        this.empresa = empresa;
-        this.areaAtuacao = areaAtuacao;
-    }
-
-    public VagaDTO(Vaga entity) {
-        id = entity.getId();
-        titulo = entity.getTitulo();
-        estado = entity.getEstado();
-        descricao = entity.getDescricao();
-        automacao = entity.getAutomacao();
-        nivelCarreira = entity.getNivelCarreira();
-        nivelIngles = entity.getNivelIngles();
-        regimeTrabalho = entity.getRegimeTrabalho();
-        dataAtualizacao = entity.getDataAtualizacao();
-        empresa = entity.getEmpresa().getId();
-        areaAtuacao = entity.getAreaAtuacao().getId();
-    }
 
     public Long getId() {
         return id;

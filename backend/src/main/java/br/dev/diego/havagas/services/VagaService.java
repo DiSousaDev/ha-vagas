@@ -1,5 +1,6 @@
 package br.dev.diego.havagas.services;
 
+import br.dev.diego.havagas.domain.mapper.VagaMapper;
 import br.dev.diego.havagas.entities.AreaAtuacao;
 import br.dev.diego.havagas.entities.Empresa;
 import br.dev.diego.havagas.entities.Vaga;
@@ -26,17 +27,20 @@ public class VagaService {
     @Autowired
     private VagaRepository vagaRepository;
 
+    @Autowired
+    private VagaMapper vagaMapper;
+
     @Transactional(readOnly = true)
     public Page<VagaDTO> findAllPaged(Pageable pageable) {
         Page<Vaga> vagas = vagaRepository.findAll(pageable);
-        return vagas.map(VagaDTO::new);
+        return vagas.map(vaga -> vagaMapper.vagaToVagaDto(vaga));
     }
 
     @Transactional(readOnly = true)
     public VagaDTO findById(Long id) {
         Optional<Vaga> obj = vagaRepository.findById(id);
         Vaga vaga = obj.orElseThrow(() -> new ResourceNotFoundException("Vaga não encontrada."));
-        return new VagaDTO(vaga);
+        return vagaMapper.vagaToVagaDto(vaga);
     }
 
     @Transactional
@@ -44,7 +48,7 @@ public class VagaService {
         Vaga vaga = new Vaga();
         copyDTOToEntity(vagaInsertDTO, vaga);
         vaga = vagaRepository.save(vaga);
-        return new VagaDTO(vaga);
+        return vagaMapper.vagaToVagaDto(vaga);
     }
 
     @Transactional
@@ -53,7 +57,7 @@ public class VagaService {
             Vaga vaga = vagaRepository.getById(id);
             copyDTOToEntity(vagaInsertDTO, vaga);
             vaga = vagaRepository.save(vaga);
-            return new VagaDTO(vaga);
+            return vagaMapper.vagaToVagaDto(vaga);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id [" + id + "] não encontrado.");
         }

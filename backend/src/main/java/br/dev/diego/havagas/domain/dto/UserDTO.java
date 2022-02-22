@@ -1,7 +1,5 @@
 package br.dev.diego.havagas.domain.dto;
 
-import br.dev.diego.havagas.entities.User;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
@@ -17,17 +15,6 @@ public class UserDTO {
     private String email;
 
     private final Set<RoleDTO> roles = new HashSet<>();
-
-    public UserDTO(){
-    }
-
-    public UserDTO(User entity){
-        id = entity.getId();
-        firstName = entity.getFirstName();
-        lastName = entity.getLastName();
-        email = entity.getEmail();
-        entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
-    }
 
     public Long getId(){
         return id;
