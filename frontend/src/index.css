@@ -17,3 +17,11 @@ a, a:hover {
   text-decoration: none;
   color: unset;
 }
+
+.card-home {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 8px;
+}
